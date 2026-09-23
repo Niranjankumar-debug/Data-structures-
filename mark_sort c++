@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int marks[5];
+    int i, j, temp; // Fixed: Changed '1, 1' to 'i, j'
+
+    // Input marks for 5 students
+    cout << "Enter the marks of 5 students:\n";
+    for (i = 0; i < 5; i++) {
+        cout << "Student " << i + 1 << ": ";
+        // Fixed: Ensure the input reads into the array properly
+        cin >> marks[i]; 
+    }
+
+    // Sort the marks in descending order using bubble sort
+    for (i = 0; i < 5 - 1; i++) {
+        for (j = 0; j < 5 - i - 1; j++) { // Fixed: Added '5' before '- i - 1'
+            if (marks[j] < marks[j + 1]) { // Fixed: Simplified comparison
+                // Swap if the element found is smaller than the next element 
+                temp = marks[j];
+                marks[j] = marks[j + 1];   // Fixed: Added missing swap assignment
+                marks[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "\nMarks in descending order (Highest to Lowest):\n";
+    for (i = 0; i < 5; i++) {
+        cout << "Student " << i + 1 << ": " << marks[i] << endl; // Fixed: Changed ':' to ';'
+    }
+    
+    return 0;
+}
